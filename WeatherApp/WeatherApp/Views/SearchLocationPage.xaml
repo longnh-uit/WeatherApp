@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.SearchLocationPage"
+             xmlns:local="clr-namespace:WeatherApp"
+             BackgroundColor="#18465E"
+             Padding="15, 10, 15, 0">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid ColumnSpacing="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton x:Name="BackButton" BackgroundColor="#18465E" Padding="5,0,0,0"
+                             Source="back_arrow.png" Clicked="BackButton_Clicked"
+                             WidthRequest="20" HeightRequest="20"
+                             Grid.Row="0" Grid.Column="0"/>
+                <local:CustomEntry Margin="30,0,0,0" x:Name="SearchEntry" Placeholder="Tìm kiếm..." TextChanged="SearchEntry_TextChanged"
+                                   TextColor="White" PlaceholderColor="#AAAAAA" FontSize="20"
+                                   Grid.Row="0" Grid.Column="1"/>
+                <ImageButton x:Name="ClearButton" BackgroundColor="#18465E"
+                             Source="delete_30px" Clicked="ClearButton_Clicked"
+                             WidthRequest="20" HeightRequest="20" 
+                             Grid.Row="0" Grid.Column="2" IsVisible="False"/>
+            </Grid>
+            <ListView x:Name="listPositionSearch" ItemSelected="listPositionSearch_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+                                <Image Source="marker_20px.png" Grid.Row="0" Grid.Column="0"  WidthRequest="20" HeightRequest="5"></Image>
+                                <Label Text="{Binding name}" x:Name="nameLocation" VerticalOptions="Center" HorizontalOptions="Start" 
+                                        Grid.Row="0" Grid.Column="1" FontSize="20" Padding="10,0,0,0"></Label>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
